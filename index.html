@@ -5,20 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redireccionador</title>
     <script>
+        // Objeto con las redirecciones
+        const redirecciones = {
+            "redirecciones": [
+                {
+                    "slug": "blog",
+                    "url": "https://marcmayol.com/#/blog"
+                },
+                {
+                    "slug": "marc",
+                    "url": "https://marcmayol.com/"
+                }
+            ]
+        };
+
         // Función para obtener el slug de la URL actual
         function getSlug() {
             const path = window.location.pathname;
             return path.substring(1); // Elimina la barra inicial
         }
 
-        // Función para cargar y procesar las redirecciones
-        async function handleRedirect() {
+        // Función para procesar las redirecciones
+        function handleRedirect() {
             try {
                 const slug = getSlug();
-                const response = await fetch('redirecciones.json');
-                const redirecciones = await response.json();
-                
-                const redireccion = redirecciones.find(r => r.slug === slug);
+                const redireccion = redirecciones.redirecciones.find(r => r.slug === slug);
                 
                 if (redireccion) {
                     // Realizar redirección 301
@@ -27,7 +38,7 @@
                     document.getElementById('error').textContent = 'Redirección no encontrada';
                 }
             } catch (error) {
-                document.getElementById('error').textContent = 'Error al cargar las redirecciones';
+                document.getElementById('error').textContent = 'Error al procesar la redirección';
                 console.error('Error:', error);
             }
         }
