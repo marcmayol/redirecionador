@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redireccionador</title>
+    <script>
+        // Función para obtener el slug de la URL actual
+        function getSlug() {
+            const path = window.location.pathname;
+            return path.substring(1); // Elimina la barra inicial
+        }
+
+        // Función para cargar y procesar las redirecciones
+        async function handleRedirect() {
+            try {
+                const slug = getSlug();
+                const response = await fetch('redirecciones.json');
+                const redirecciones = await response.json();
+                
+                const redireccion = redirecciones.find(r => r.slug === slug);
+                
+                if (redireccion) {
+                    // Realizar redirección 301
+                    window.location.replace(redireccion.url);
+                } else {
+                    document.getElementById('error').textContent = 'Redirección no encontrada';
+                }
+            } catch (error) {
+                document.getElementById('error').textContent = 'Error al cargar las redirecciones';
+                console.error('Error:', error);
+            }
+        }
+
+        // Ejecutar cuando se carga la página
+        window.onload = handleRedirect;
+    </script>
+</head>
+<body>
+    <div id="error"></div>
+</body>
+</html> 

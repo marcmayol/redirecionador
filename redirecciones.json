@@ -1,0 +1,12 @@
+{
+    "redirecciones": [
+        {
+            "slug": "blog",
+            "url": "https://marcmayol.com/#/blog"
+        },
+        {
+            "slug": "marc",
+            "url": "https://marcmayol.com/"
+        }
+    ]
+} 
