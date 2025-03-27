@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redireccionador</title>
+    <meta charSet="utf-8"/>
+    <title>Marc Mayol</title>
+    <meta name="description"
+          content="redes de Marc Mayol Gen AI Developer & Researcher con cocimientos sobre IA Generativa, productos de Google y desarrollo de inteligencia artificial"/>
+    <link rel="canonical" href="https://marcmayol.link/"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="application-name" content="Marc Mayol blog personal"/>
+    <meta name="theme-color" content="#ffffff"/>
+    <meta name="robots" content="index,follow"/>
+    <meta name="googlebot" content="index,follow"/>
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png"/>
+    <link rel="author" href="%PUBLIC_URL%/humans.txt"/>
     <script>
         // Objeto con las redirecciones
         const redirecciones = {
@@ -15,6 +24,10 @@
                 {
                     "slug": "marc",
                     "url": "https://marcmayol.com/"
+                },
+                {
+                    "slug": "googlerust",
+                    "url": "https://google.github.io/comprehensive-rust/es/"
                 }
             ]
         };
@@ -31,13 +44,23 @@
         function handleRedirect() {
             try {
                 const slug = getSlug();
+
+                // Si no hay slug, mostramos el contenido normal
+                if (!slug) {
+                    document.getElementById('error').style.display = 'none';
+                    document.getElementById('contenido').style.display = 'block';
+                    return;
+                }
+
                 const redireccion = redirecciones.redirecciones.find(r => r.slug === slug);
                 
                 if (redireccion) {
                     // Realizar redirección 301
                     window.location.replace(redireccion.url);
                 } else {
-                    document.getElementById('error').textContent = 'Redirección no encontrada';
+                    // Si no hay redirección, mostramos el contenido normal
+                    document.getElementById('error').style.display = 'none';
+                    document.getElementById('contenido').style.display = 'flex';
                 }
             } catch (error) {
                 document.getElementById('error').textContent = 'Error al procesar la redirección';
@@ -48,8 +71,166 @@
         // Ejecutar cuando se carga la página
         window.onload = handleRedirect;
     </script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div id="error"></div>
+<body class="min-h-screen bg-white text-gray-900 font-sans antialiased">
+<main class="container mx-auto px-6 py-16 max-w-4xl">
+    <section id="about" class="mb-24 text-center">
+        <img
+                src="/perfil.png"
+                alt="Marc Mayol"
+                class="block mx-auto mb-4 w-40 h-45 rounded-full"
+        />
+        <h1 class="text-5xl font-bold mb-4 tracking-tight">Marc Mayol</h1>
+        <h2 class="text-2xl text-gray-500 mb-8">Gen AI Tech lead - Consultor, Instructor, Conferenciante</h2>
+        <p class="text-xl leading-relaxed text-gray-700 max-w-2xl mx-auto">
+            ¡Hola! Soy Marc, Tech Lead especializado en Inteligencia Artificial Generativa y un
+            entusiasta apasionado de este fascinante mundo. Con experiencia en el desarrollo de aplicaciones
+            de inteligencia artificial, me esfuerzo por crear sistemas inteligentes que puedan tener un
+            impacto positivo en nuestro mundo.
+        </p>
+    </section>
+    <section id="error"></section>
+    <h2 class="text-3xl font-semibold mb-6 text-center w-full">¿Te interesa la IA? Sígueme y descubre lo último en este mundo apasionante.</h2>
+    <section id="contenido" class="space-y-4 mt-6">
+        <ul class="w-full">
+            <!-- LinkedIn -->
+            <li class="mb-5">
+                <a href="https://www.linkedin.com/in/marc-mayol-orell/" target="_blank"
+                   class="flex items-center bg-blue-100 hover:scale-105 transition-all duration-200 rounded-xl p-3 shadow-md w-full group">
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" class="w-8 h-8">
+                        <span class="text-[10px] text-blue-700 mt-1">Sígueme</span>
+                    </div>
+                    <span class="ml-4 flex-1 font-medium text-blue-800">LinkedIn</span>
+                    <span class="text-blue-800 font-bold text-xl transition-transform group-hover:translate-x-1">→</span>
+                </a>
+            </li>
+
+            <!-- Twitter -->
+            <li class="mb-5">
+                <a href="https://x.com/srmarcmayol" target="_blank"
+                   class="flex items-center bg-gray-200 hover:scale-105 transition-all duration-200 rounded-xl p-3 shadow-md w-full group">
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" class="w-8 h-8">
+                        <span class="text-[10px] text-gray-700 mt-1">Sígueme</span>
+                    </div>
+                    <span class="ml-4 flex-1 font-medium text-gray-800">Twitter</span>
+                    <span class="text-gray-800 font-bold text-xl transition-transform group-hover:translate-x-1">→</span>
+                </a>
+            </li>
+
+            <!-- YouTube -->
+            <li class="mb-5">
+                <a href="https://www.youtube.com/@SrMarcMayol" target="_blank"
+                   class="flex items-center bg-red-100 hover:scale-105 transition-all duration-200 rounded-xl p-3 shadow-md w-full group">
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"
+                             class="w-8 h-8">
+                        <span class="text-[10px] text-red-700 mt-1">Sígueme</span>
+                    </div>
+                    <span class="ml-4 flex-1 font-medium text-red-700">YouTube</span>
+                    <span class="text-red-700 font-bold text-xl transition-transform group-hover:translate-x-1">→</span>
+                </a>
+            </li>
+            <!-- Instagram -->
+            <li class="mb-5">
+                <a href="https://www.instagram.com/srmarcmayol/" target="_blank"
+                   class="flex items-center bg-pink-100 hover:scale-105 transition-all duration-200 rounded-xl p-3 shadow-md w-full group">
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"
+                             class="w-8 h-8">
+                        <span class="text-[10px] text-pink-700 mt-1">Sígueme</span>
+                    </div>
+                    <span class="ml-4 flex-1 font-medium text-pink-700">Instagram</span>
+                    <span class="text-pink-700 font-bold text-xl transition-transform group-hover:translate-x-1">→</span>
+                </a>
+            </li>
+            <li class="mb-5">
+                <a href="https://www.twitch.tv/srmarcmayol" target="_blank"
+                   class="flex items-center bg-purple-100 hover:scale-105 transition-all duration-200 rounded-xl p-3 shadow-md w-full group">
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968819.png" alt="Twitch" class="w-8 h-8">
+                        <span class="text-[10px] text-purple-700 mt-1">Sígueme</span>
+                    </div>
+                    <span class="ml-4 flex-1 font-medium text-purple-700">Twitch</span>
+                    <span class="text-purple-700 font-bold text-xl transition-transform group-hover:translate-x-1">→</span>
+                </a>
+            </li>
+            <li>
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@srmarcmayol" target="_blank"
+                   class="flex items-center bg-black/10 hover:scale-105 transition-all duration-200 rounded-xl p-3 shadow-md w-full group">
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" class="w-8 h-8">
+                        <span class="text-[10px] text-black mt-1">Sígueme</span>
+                    </div>
+                    <span class="ml-4 flex-1 font-medium text-black">TikTok</span>
+                    <span class="text-black font-bold text-xl transition-transform group-hover:translate-x-1">→</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <section id="newsletter" class="mb-24  mt-24">
+        <h2 class="text-3xl font-semibold mb-6 text-center">Mantente al día</h2>
+        <div
+                class="bg-gray-100 rounded-3xl p-10 flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 mb-6 md:mb-0">
+                <img
+                        src="/newslleter.png"
+                        alt="Smart AI Developer Newsletter"
+                        class="rounded-2xl shadow-lg"
+                        width="400"
+                        height="300"
+                />
+            </div>
+            <div class="md:w-1/2 md:pl-10 text-center md:text-left">
+                <p class="mb-6 text-xl text-gray-700">
+                    Suscríbete a mi newsletter en LinkedIn para estar al tanto de las últimas novedades en
+                    desarrollo de IA, tendencias del sector y contenido exclusivo.
+                </p>
+                <a
+                        href="https://www.linkedin.com/newsletters/7226589723593498624/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center px-8 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors duration-300 text-lg newsletter-link"
+                >
+                    Suscríbete en LinkedIn
+                    <span class="ml-1 text-white font-bold text-xl transition-transform group-hover:translate-x-1">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section id="blog" class="mb-24">
+        <h2 class="text-3xl font-semibold mb-6 text-center">Aprende e infórmate</h2>
+        <div
+                class="bg-gray-100 rounded-3xl p-10 flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 mb-6 md:mb-0">
+                <img
+                        src="/mediumlogo.png"
+                        alt="medium logo"
+                        class="rounded-2xl shadow-lg"
+                        width="400"
+                        height="300"
+                />
+            </div>
+            <div class="md:w-1/2 md:pl-10 text-center md:text-left">
+                <p class="mb-6 text-xl text-gray-700">
+                    Tampoco te pierdas mi blog en medium donde comparto mis conocimientos sobre IA
+                    Generativa, productos de Google y desarrollo de inteligencia artificial.
+                </p>
+                <a
+                        href="/blog"
+                        class="inline-flex items-center px-8 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors duration-300 text-lg"
+                >
+                    Ver atículos
+                    <span class="ml-1 text-white font-bold text-xl transition-transform group-hover:translate-x-1">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
 </body>
 </html> 
